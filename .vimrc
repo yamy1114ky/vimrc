@@ -54,8 +54,8 @@ imap <buffer> <expr><CR> pumvisible() ? neocomplcache#smart_close_popup() : Inde
 
 "" operation
 inoremap jk <Esc>
-inoremap jq <Esc>:wq<CR>
-inoremap jnq <Esc>:q!<CR>
+inoremap jwq <Esc>:wq<CR>
+inoremap jqq <Esc>:q!<CR>
 nnoremap <Esc><Esc> :noh<CR>
 nnoremap / /\v
 nnoremap ? :%s///g<LEFT><LEFT>

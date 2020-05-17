@@ -1,25 +1,49 @@
+" Settings
+"" visual
+set number
+set laststatus=2
+set cursorline
+colorscheme jellybeans
+set t_Co=256
+syntax on
 
-" settings
+"" search
+set hlsearch
+set ignorecase
+set smartcase
+
+"" edit
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp
+autocmd BufWritePre * :%s/\s\+$//ge
+
+"" move
+set incsearch
+set whichwrap=b,s,h,l,<,>,[,]
 if has('mouse')
   set mouse=a
 endif
-set whichwrap=b,s,h,l,<,>,[,]
-set number
-syntax on
-colorscheme jellybeans
-set t_Co=256
-let g:neocomplcache_enable_at_startup = 1
-let g:user_emmet_leader_key = '<C-E>'
-set laststatus=2
-autocmd BufWritePre * :%s/\s\+$//ge
 
-" mappers
-inoremap <silent><C-e> :NERDTreeToggle<CR>
+"" plugin related
+let g:neocomplcache_enable_at_startup = 1
+let g:ale_fixers = { 'ruby': ['rubocop'] }
+let g:user_emmet_leader_key = '<C-t>'
+
+" Key Mappers
+"" move
+inoremap <expr> <C-a> "\<Esc>I"
+inoremap <expr> <C-e> "\<Esc>A"
+nnoremap <expr> <C-j> "\<Esc>10j"
+nnoremap <expr> <C-k> "\<Esc>10k"
+nnoremap <expr> <C-h> "\<Esc>10h"
+nnoremap <expr> <C-l> "\<Esc>10l"
+inoremap <expr> ⇒ JumpEndOfBracket()
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : EscapeBraces()
+
+"" complement
 inoremap { {}<LEFT>
 inoremap ( ()<LEFT>
 inoremap < <><LEFT>
@@ -27,17 +51,17 @@ inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
 inoremap [ []<LEFT>
 inoremap <expr> % CreateErbSnippet()
-inoremap <expr> ⇒ JumpEndOfBracket()
-nnoremap <expr> <C-j> "\<Esc>10j"
-nnoremap <expr> <C-k> "\<Esc>10k"
-nnoremap <expr> <C-h> "\<Esc>10h"
-nnoremap <expr> <C-l> "\<Esc>10l"
-
-
 imap <buffer> <expr><CR> pumvisible() ? neocomplcache#smart_close_popup() : IndentBracesDoEndwise()
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : EscapeBraces()
 
-" 括弧や begin ~ end などの位置を調整して入力しやすくする
+"" operation
+inoremap jk <Esc>
+inoremap jwq <Esc>:wq<CR>
+inoremap jqq <Esc>:q!<CR>
+nnoremap <Esc><Esc> :noh<CR>
+nnoremap / /\v
+nnoremap ? :%s///g<LEFT><LEFT>
+
+" Functions
 function! IndentBracesDoEndwise()
   let nowletter = getline(".")[col(".")-1]
   let beforeletter = getline(".")[col(".")-2]
@@ -48,7 +72,6 @@ function! IndentBracesDoEndwise()
   endif
 endfunction
 
-" tab で括弧内からエスケープ
 function! EscapeBraces()
   let nowletter = getline(".")[col(".")-1]
   let afterletter = getline(".")[col(".")]
@@ -61,64 +84,36 @@ function! EscapeBraces()
   endif
 endfunction
 
-" Shift+Enter で次の閉じ括弧までジャンプ
-" （itemr2 の設定で Shift+Enter を別の文字に置き換えておく必要あり）
 function! JumpEndOfBracket()
-  return "\<Esc>/\\v(\}|\\]|\\)|end)\<CR>\<Esc>A"
+  return "\<Esc>/\\v(\}|\\]|\\)|end)\<CR>\<Esc>:noh\<CR>A"
 endfunction
 
 function! CreateErbSnippet()
   if getline(".")[col(".")-2] == '<'
     return "%%\<LEFT>"
   else
-    return ''
+    return '%'
   endif
 endfunction
 
-"---------------------------
-" Start Neobundle Settings.
-"---------------------------
+" Neobundle Plugin Managements
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 
-" Required:
-"
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'scrooloose/nerdtree'
-" NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'Shougo/neocomplcache'
-""NeoBundle 'tomasr/molokai'
 NeoBundle 'nanotech/jellybeans.vim'
-" NeoBundle 'jiangmiao/simple-javascript-indenter'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
-" NeoBundle 'tpope/vim-endwise'
 NeoBundle 'yamy1114ky/vim-endwise'
 NeoBundle 'leafgarland/typescript-vim'
-" NeoBundle 'Shougo/vimproc'
 NeoBundle 'Quramy/tsuquyomi'
-" NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'Shougo/vimproc', {
-    \ 'build' : {
-    \     'windows' : 'make -f make_mingw32.mak',
-    \     'cygwin' : 'make -f make_cygwin.mak',
-    \     'mac' : 'make -f make_mac.mak',
-    \     'unix' : 'make -f make_unix.mak',
-    \    },
-    \ }
+NeoBundle 'w0rp/ale'
 
 call neobundle#end()
 
-" Required:
 filetype plugin indent on
 
 NeoBundleCheck
-
-"-------------------------
-" End Neobundle Settings.
-"-------------------------
-
-

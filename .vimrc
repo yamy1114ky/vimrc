@@ -56,7 +56,7 @@ inoremap <expr> % CreateErbSnippet()
 imap <buffer> <expr><CR> pumvisible() ? neocomplcache#smart_close_popup() : IndentBracesDoEndwise()
 
 "" operation
-inoremap jk <Esc>
+inoremap jk <Esc>l
 inoremap jwq <Esc>:wq<CR>
 inoremap jww <Esc>:w<CR>
 inoremap jqq <Esc>:q!<CR>

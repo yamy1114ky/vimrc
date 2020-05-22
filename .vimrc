@@ -6,6 +6,7 @@ set cursorline
 colorscheme jellybeans
 set t_Co=256
 syntax on
+" set signcolumn=yes
 
 "" search
 set hlsearch
@@ -110,7 +111,7 @@ NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'yamy1114ky/vim-endwise'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'Quramy/tsuquyomi'
-NeoBundle 'w0rp/ale'
+" NeoBundle 'w0rp/ale'
 
 call neobundle#end()
 

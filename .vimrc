@@ -20,6 +20,7 @@ set shiftwidth=2
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp
 autocmd BufWritePre * :%s/\s\+$//ge
+runtime macros/matchit.vim
 
 "" move
 set incsearch

@@ -121,4 +121,4 @@ filetype plugin indent on
 NeoBundleCheck
 
 " color schema (need to write neobundle#end())
-colorscheme iceberg
+colorscheme jellybeans

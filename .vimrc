@@ -3,11 +3,9 @@
 set number
 set laststatus=2
 set cursorline
-colorscheme jellybeans
 set t_Co=256
 syntax on
 " set signcolumn=yes
-
 "" search
 set hlsearch
 set ignorecase
@@ -107,6 +105,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
@@ -120,3 +119,6 @@ call neobundle#end()
 filetype plugin indent on
 
 NeoBundleCheck
+
+" color schema (need to write neobundle#end())
+colorscheme iceberg

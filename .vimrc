@@ -105,8 +105,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'cocopon/iceberg.vim'
+NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
@@ -122,4 +121,4 @@ filetype plugin indent on
 NeoBundleCheck
 
 " color schema (need to write neobundle#end())
-colorscheme jellybeans
+colorscheme hybrid

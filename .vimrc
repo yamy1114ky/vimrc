@@ -61,6 +61,7 @@ inoremap jqq <Esc>:q!<CR>
 nnoremap <Esc><Esc> :noh<CR>
 nnoremap / /\v
 nnoremap ? :%s///g<LEFT><LEFT>
+vnoremap / <Esc>/\%V\v
 
 " Functions
 function! IndentBracesDoEndwise()

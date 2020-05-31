@@ -1,4 +1,4 @@
-" Settings
+0" Settings
 "" visual
 set number
 set laststatus=2
@@ -62,6 +62,7 @@ nnoremap <Esc><Esc> :noh<CR>
 nnoremap / /\v
 nnoremap ? :%s///g<LEFT><LEFT>
 vnoremap / <Esc>/\%V\v
+set pastetoggle=<C-p>
 
 " Functions
 function! IndentBracesDoEndwise()
@@ -121,4 +122,5 @@ filetype plugin indent on
 NeoBundleCheck
 
 " color schema (need to write neobundle#end())
+set background=dark
 colorscheme hybrid

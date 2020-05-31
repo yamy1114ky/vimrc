@@ -1,11 +1,11 @@
-0" Settings
+" Settings
 "" visual
 set number
 set laststatus=2
 set cursorline
 set t_Co=256
 syntax on
-" set signcolumn=yes
+
 "" search
 set hlsearch
 set ignorecase

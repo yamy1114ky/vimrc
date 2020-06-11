@@ -128,3 +128,10 @@ NeoBundleCheck
 " color schema (need to write neobundle#end())
 set background=dark
 colorscheme hybrid
+
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight LineNr ctermbg=none
+highlight LineNr ctermfg=darkgray
+highlight Folded ctermbg=none
+highlight EndOfBuffer ctermbg=none

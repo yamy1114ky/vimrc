@@ -40,6 +40,10 @@ nnoremap <expr> <C-j> "\<Esc>10j"
 nnoremap <expr> <C-k> "\<Esc>10k"
 nnoremap <expr> <C-h> "\<Esc>10h"
 nnoremap <expr> <C-l> "\<Esc>10l"
+vnoremap <expr> <C-j> "10j"
+vnoremap <expr> <C-k> "10k"
+vnoremap <expr> <C-h> "10h"
+vnoremap <expr> <C-l> "10l"
 inoremap <expr> ⇒ JumpEndOfBracket()
 inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : EscapeBraces()
 
